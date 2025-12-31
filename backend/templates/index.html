@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Predictor API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        .endpoint {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid #007bff;
+            border-radius: 5px;
+        }
+        code {
+            background: #e9ecef;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        .method {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .get { background: #28a745; color: white; }
+        .post { background: #007bff; color: white; }
+        pre {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📈 Stock Price Prediction API</h1>
+        <p>This API provides stock price predictions using LSTM and ARIMA models.</p>
+        
+        <div class="endpoint">
+            <span class="method get">GET</span> <code>/api/health</code>
+            <p>Check API health status</p>
+        </div>
+        
+        <div class="endpoint">
+            <span class="method post">POST</span> <code>/api/predict</code>
+            <p>Get stock price predictions</p>
+            <p><strong>Request Body:</strong></p>
+            <pre>{
+  "ticker": "AMZN",
+  "days": 30,
+  "model": "lstm"
+}</pre>
+        </div>
+        
+        <div class="endpoint">
+            <span class="method get">GET</span> <code>/api/stats/&lt;ticker&gt;</code>
+            <p>Get stock information and statistics</p>
+            <p>Example: <code>/api/stats/AAPL</code></p>
+        </div>
+        
+        <div class="endpoint">
+            <span class="method get">GET</span> <code>/api/historical/&lt;ticker&gt;?days=365</code>
+            <p>Get historical stock data</p>
+        </div>
+        
+        <div class="endpoint">
+            <span class="method get">GET</span> <code>/api/models</code>
+            <p>Get available prediction models</p>
+        </div>
+        
+        <h2>Frontend Application</h2>
+        <p>The main application is available at <a href="http://localhost:3000">http://localhost:3000</a></p>
+        
+        <h2>Usage Examples</h2>
+        <h3>Python:</h3>
+        <pre>
+import requests
+
+response = requests.post('http://localhost:5000/api/predict', 
+    json={
+        'ticker': 'GOOGL',
+        'days': 30,
+        'model': 'lstm'
+    })
+data = response.json()
+        </pre>
+        
+        <h3>JavaScript:</h3>
+        <pre>
+fetch('http://localhost:5000/api/predict', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        ticker: 'MSFT',
+        days: 30,
+        model: 'arima'
+    })
+})
+.then(response => response.json())
+.then(data => console.log(data));
+        </pre>
+    </div>
+</body>
+</html>

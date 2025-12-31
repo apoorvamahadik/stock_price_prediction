@@ -1,0 +1,33 @@
+{
+  "name": "stock-predictor",
+  "version": "1.0.0",
+  "description": "Full-stack stock price prediction application",
+  "scripts": {
+    "install-all": "npm install --prefix frontend && pip install -r backend/requirements.txt",
+    "start-backend": "cd backend && python app.py",
+    "start-frontend": "cd frontend && npm start",
+    "start": "concurrently \"npm run start-backend\" \"npm run start-frontend\"",
+    "build": "cd frontend && npm run build",
+    "train-model": "cd ml_models && python train_model.py",
+    "docker-build": "docker-compose build",
+    "docker-up": "docker-compose up",
+    "test": "cd backend && python -m pytest tests/",
+    "clean": "rm -rf frontend/node_modules backend/__pycache__ ml_models/__pycache__"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/stock-predictor.git"
+  },
+  "keywords": [
+    "stock",
+    "prediction",
+    "lstm",
+    "arima",
+    "machine-learning"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}

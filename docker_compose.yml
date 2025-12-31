@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app
+      - ./ml_models:/ml_models
+      - ./data:/data
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=production
+      - MODEL_PATH=/ml_models/saved_lstm_model.h5
+    networks:
+      - stock-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - REACT_APP_API_URL=http://backend:5000
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - backend
+    networks:
+      - stock-network
+
+networks:
+  stock-network:
+    driver: bridge
