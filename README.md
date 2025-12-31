@@ -119,7 +119,7 @@ model = Sequential([
 - **10-20% MAPE**: Moderate ⭐⭐⭐
 - **>20% MAPE**: Poor ⭐⭐
 
-**Our Model: 5.51% → GOOD ⭐⭐⭐⭐**
+**This Model: 5.51% → GOOD ⭐⭐⭐⭐**
 
 ## 🔮 Prediction Example
 
@@ -162,7 +162,7 @@ for i in range(len(data) - 60 - 18):
 - **Benchmark Comparison**:
   - Random Guess: ~20-30% MAPE
   - Traditional Models: 10-15% MAPE
-  - Our LSTM: 5.51% MAPE ✅
+  - This model -  LSTM: 5.51% MAPE ✅
 - **Practical Utility**: <10% MAPE is considered production-ready
 
 ### Model Strengths
@@ -213,6 +213,6 @@ This project has been published in the IEEE Xplore Digital Library:
 ## 📧 Contact
 
 **Apoorva Mahadik**  
-📧 apoorva.mahadik@example.com  
-🔗 [LinkedIn](https://linkedin.com/in/apoorvamahadik)  
+📧 mahadikapoorva245@gmail.com
+🔗 [LinkedIn](https://www.linkedin.com/in/apoorva-mahadik/)  
 🐙 [GitHub](https://github.com/apoorvamahadik)
